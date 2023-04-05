@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'calculation.dart';
@@ -112,6 +114,7 @@ class Keyboard extends StatelessWidget {
 // キーボタン
 class Button extends StatelessWidget {
   final _key;
+  // ignore: prefer_const_constructors_in_immutables
   Button(this._key);
   @override
   Widget build(BuildContext context) {
