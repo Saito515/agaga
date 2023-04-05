@@ -3,7 +3,7 @@ const c_op = ['+', '-', '×', '÷'];
 class Calculator {
   static var _number = [];
   static var _op = [];
-  static String _buffer;
+  static String _buffer = 0 as String;
   static void GetKey(String letter) {
     // 四則演算子
     if (c_op.contains(letter)) {
@@ -24,7 +24,7 @@ class Calculator {
     }
   }
 
-  static double _result;
+  static double _result = 0;
   static String Execute() {
     _number.add(double.parse(_buffer));
     if (_number.length == 0) return '0';
