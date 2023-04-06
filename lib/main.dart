@@ -40,6 +40,10 @@ class _TextFiledState extends State<TextField> {
         controller.sink.add(ans);
       } else if (letter == 'e') {
         _expression = 'Error';
+      } else if (letter == '★') {
+        _expression = '★☆★☆★☆';
+        /*} else if (letter == '+/-') {
+        _expression = '-' + letter;*/
       } else
         _expression += letter;
     });
@@ -54,9 +58,7 @@ class _TextFiledState extends State<TextField> {
             alignment: Alignment.centerRight,
             child: Text(
               _expression,
-              style: TextStyle(
-                fontSize: 64.0,
-              ),
+              style: TextStyle(fontSize: 60.0),
             ),
           ),
         ));
@@ -76,35 +78,35 @@ class Keyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        flex: 1,
+        flex: 4,
         child: Center(
             child: Container(
-          color: const Color(0xff87cefa),
+          color: Color.fromARGB(255, 246, 241, 98),
           child: GridView.count(
-            crossAxisCount: 5, //横のマス
-            mainAxisSpacing: 3.0,
-            crossAxisSpacing: 4.0,
+            crossAxisCount: 4, //マスの数
+            mainAxisSpacing: 4.0,
+            crossAxisSpacing: 3.0,
             children: [
+              'C',
+              '+/-',
+              '%',
+              '÷',
               '7',
               '8',
               '9',
-              '÷',
-              'あ',
+              '×',
               '4',
               '5',
               '6',
-              '×',
-              'い',
+              '-',
               '1',
               '2',
               '3',
-              '-',
-              'う',
-              'C',
-              '0',
-              '=',
               '+',
+              '0',
               '.',
+              '★',
+              '=',
             ].map((key) {
               return GridTile(
                 child: Button(key),
@@ -124,13 +126,22 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: Colors.white70,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(40)), //ボタンの角
+        ),
+      ),
       onPressed: () {
         _TextFiledState.controller.sink.add(_key);
       },
       child: Center(
         child: Text(
           _key,
-          style: TextStyle(fontSize: 46.0),
+          style: TextStyle(
+            fontSize: 40.0,
+            color: Colors.black54,
+          ),
         ),
       ),
     ));
