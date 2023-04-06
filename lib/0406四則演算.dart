@@ -76,35 +76,31 @@ class Keyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        flex: 1,
+        flex: 2,
         child: Center(
             child: Container(
           color: const Color(0xff87cefa),
           child: GridView.count(
-            crossAxisCount: 5, //横のマス
+            crossAxisCount: 4,
             mainAxisSpacing: 3.0,
-            crossAxisSpacing: 4.0,
+            crossAxisSpacing: 3.0,
             children: [
               '7',
               '8',
               '9',
               '÷',
-              'あ',
               '4',
               '5',
               '6',
               '×',
-              'い',
               '1',
               '2',
               '3',
               '-',
-              'う',
               'C',
               '0',
               '=',
               '+',
-              '.',
             ].map((key) {
               return GridTile(
                 child: Button(key),
