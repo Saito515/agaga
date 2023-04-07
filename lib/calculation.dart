@@ -19,9 +19,9 @@ class Calculator {
     else if (letter == '=') {
       return null;
     } //演算子の連続入力の防止
-    else if (c_op.contains(letter)) {
-      _op.add(letter);
-      _buffer = '';
+    else if (letter == '-' || letter == '+' || letter == '×' || letter == '÷') {
+      _op.add(null);
+      _buffer = 'e';
     } // 数字
     else {
       _buffer += letter;
