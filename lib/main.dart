@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'calculation.dart';
+import 'nextpage.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,6 +19,24 @@ class MyApp extends StatelessWidget {
         Keyboard(),
       ],
     )));
+  }
+}
+
+class History extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: TextButton(
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => NextPage()));
+        },
+        child: Text('History'),
+        /*shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+               ),*/
+      ),
+    );
   }
 }
 
@@ -78,14 +97,14 @@ class Keyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        flex: 4,
+        flex: 3,
         child: Center(
             child: Container(
           color: Color.fromARGB(255, 246, 241, 98),
           child: GridView.count(
             crossAxisCount: 4, //マスの数
-            mainAxisSpacing: 4.0,
-            crossAxisSpacing: 3.0,
+            mainAxisSpacing: 3.0,
+            crossAxisSpacing: 15.0,
             children: [
               'C',
               '+/-',
@@ -129,7 +148,7 @@ class Button extends StatelessWidget {
       style: TextButton.styleFrom(
         backgroundColor: Colors.white70,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(40)), //ボタンの角
+          borderRadius: BorderRadius.all(Radius.circular(50)), //ボタンの角
         ),
       ),
       onPressed: () {
