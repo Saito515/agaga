@@ -61,8 +61,12 @@ class _TextFiledState extends State<TextField> {
         _expression = 'Error';
       } else if (letter == '★') {
         _expression = '★☆★☆★☆';
-        /*} else if (letter == '+/-') {
-        _expression = '-' + letter;*/
+        /*} else if (letter == '-' ||
+          letter == '+' ||
+          letter == '×' ||
+          letter == '÷') {
+        _expression = '';
+        */
       } else
         _expression += letter;
     });
