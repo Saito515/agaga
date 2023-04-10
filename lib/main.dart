@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       children: [
         TextField(),
         Keyboard(),
+        History(), //履歴
       ],
     )));
   }
@@ -31,7 +32,7 @@ class History extends StatelessWidget {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => NextPage()));
         },
-        child: Text('History'),
+        child: Text('履歴'),
         /*shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
                ),*/
@@ -59,14 +60,12 @@ class _TextFiledState extends State<TextField> {
         controller.sink.add(ans);
       } else if (letter == 'e') {
         _expression = 'Error';
-      } else if (letter == '★') {
-        _expression = '★☆★☆★☆';
-        /*} else if (letter == '-' ||
+
+        /* } else if (letter == '-' ||
           letter == '+' ||
           letter == '×' ||
           letter == '÷') {
-        _expression = '';
-        */
+        _expression = '';*/
       } else
         _expression += letter;
     });
@@ -95,8 +94,7 @@ class _TextFiledState extends State<TextField> {
   }
 }
 
-//==============================================================================
-// キーボード
+//以下デザインの部分--------------------------------------------------------------
 class Keyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -117,7 +115,7 @@ class Keyboard extends StatelessWidget {
               '7',
               '8',
               '9',
-              '×',
+              '✖',
               '4',
               '5',
               '6',

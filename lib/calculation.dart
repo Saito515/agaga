@@ -1,54 +1,67 @@
-const c_op = ['+', '-', '×', '÷'];
+import 'package:flutter/material.dart';
+import 'main.dart';
+
+const c_op = ['+', '-', '✖', '÷'];
 
 class Calculator {
-  static var _number = [];
-  static var _op = [];
-  static String _buffer = 0 as String;
+  static var num = [];
+  static var op = [];
+//letterは上に出る字、bufferは一旦保持する字
+  static String buffer = 0 as String;
+
   static void GetKey(String letter) {
-    // 四則演算子
+    //四則演算
     if (c_op.contains(letter)) {
-      _op.add(letter);
-      _number.add(double.parse(_buffer));
-      _buffer = '';
-    } // C
-    else if (letter == 'C') {
-      _number.clear();
-      _op.clear();
-      _buffer = '';
-    } // =
+      //もしletterに演算子が含まれていたら
+      op.add(letter); //演算子をop配列に追加
+      num.add(double.parse(buffer)); //num配列の末尾にダブル型のbufferを追加
+      buffer = ''; //bufferを空にする
+    } //C
+    else if (letter == 'c') {
+      //もしletterがCならば
+      num.clear(); //numの配列からすべてのオブジェクトを削除、lengthも0
+      op.clear(); //numの配列からすべてのオブジェクトを削除、lengthも0
+      buffer = ''; //bufferを空にする
+    } //=
     else if (letter == '=') {
       return null;
-    } //演算子の連続入力の防止
-    else if (letter == '-' || letter == '+' || letter == '×' || letter == '÷') {
-      _op.add(null);
-      _buffer = 'e';
-    } // 数字
+    } //数字
     else {
-      _buffer += letter;
+      buffer += letter;
     }
   }
 
-  static double _result = 0;
+  static double result = 0.0;
   static String Execute() {
-    _number.add(double.parse(_buffer));
-    if (_number.length == 0) return '0';
-    _result = _number[0];
-    for (int i = 0; i < _op.length; i++) {
-      if (_op[i] == '+')
-        _result += _number[i + 1];
-      else if (_op[i] == '-')
-        _result -= _number[i + 1];
-      else if (_op[i] == '×')
-        _result *= _number[i + 1];
-      else if (_op[i] == '÷' && _number[i + 1] != 0)
-        _result /= _number[i + 1];
-      else
-        return 'e';
+    num.add(double.parse(buffer)); //numに入力された値を追加
+
+    if (num.length == 0) return '0'; //numの配列が0のとき0を返す
+
+    result = num[0]; //resultには配列の0番目を格納
+
+    for (int i = 0; i < op.length; i++) {
+      //演算子の数の間
+      if (op[i] == '+') {
+        //足し算
+        result += num[i + 1];
+      } else if (op[i] == '-') {
+        //引き算
+        result -= num[i + 1];
+      } else if (op[i] == '✖') {
+        //かけ算
+        result *= num[i + 1];
+      } else if (op[i] == '÷' && num[i + 1] != 0) //割り算
+      {
+        result /= num[i + 1];
+      } else {
+        return 'e'; //以外はエラー表示
+      }
     }
-    _number.clear();
-    _op.clear();
-    _buffer = '';
-    var resultStr = _result.toString().split('.');
-    return resultStr[1] == '0' ? resultStr[0] : _result.toString();
+    num.clear();
+    op.clear();
+    buffer = '';
+
+    var resultStr = result.toString().split('.');
+    return resultStr[1] == '0' ? resultStr[0] : result.toString();
   }
 }
