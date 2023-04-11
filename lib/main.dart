@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'calculation.dart';
+import 'calculation5.dart';
 import 'nextpage.dart';
 
 void main() => runApp(MyApp());
@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//履歴表示
 class History extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -115,7 +116,7 @@ class Keyboard extends StatelessWidget {
               '7',
               '8',
               '9',
-              '✖',
+              '×',
               '4',
               '5',
               '6',

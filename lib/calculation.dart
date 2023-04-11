@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'dart:io';
 
-const c_op = ['+', '-', '✖', '÷'];
+const c_op = ['+', '-', '×', '÷'];
 
 class Calculator {
   static var num = [];
@@ -43,12 +44,15 @@ class Calculator {
       //演算子の数の間
       if (op[i] == '+') {
         //足し算
+
         result += num[i + 1];
       } else if (op[i] == '-') {
         //引き算
+
         result -= num[i + 1];
-      } else if (op[i] == '✖') {
+      } else if (op[i] == '×') {
         //かけ算
+
         result *= num[i + 1];
       } else if (op[i] == '÷' && num[i + 1] != 0) //割り算
       {
@@ -57,6 +61,9 @@ class Calculator {
         return 'e'; //以外はエラー表示
       }
     }
+
+//演算子ボタンの処理
+
     num.clear();
     op.clear();
     buffer = '';
