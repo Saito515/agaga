@@ -16,13 +16,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'calc app'),
+      home: const MyHomePage(title: 'calc app'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   double _setNumber = 0;
   double _displayNumber = 0;
   double _firstNum = 0;
-  int _calcType = 0;
+  String _calcType = " ";
   int _displayPow = 0;
   bool _decimalFlag = false;
 
@@ -132,6 +132,10 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  void _error() {
+    _displayNumber = "ERROR" as double;
+  }
+
   void _clearNum() {
     setState(() {
       _setNumber = 0;
@@ -154,6 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _invertedNum() {
+    //逆転した数字？
     setState(() {
       _displayNumber = -_displayNumber;
       _setNumber = -_setNumber;
@@ -543,6 +548,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             switch (_calcType) {
                               case CALC_TYPE.add:
                                 _calcAdd();
+
                                 break;
                               case CALC_TYPE.sub:
                                 _calcSub();
@@ -554,6 +560,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 _calcDiv();
                                 break;
                               default:
+                                _error();
                                 break;
                             }
                           },
