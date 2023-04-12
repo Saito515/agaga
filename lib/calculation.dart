@@ -57,6 +57,10 @@ class Calculator {
       } else if (op[i] == '÷' && num[i + 1] != 0) //割り算
       {
         result /= num[i + 1];
+      } else if (op[i] == '÷' && num[i + 1] == 0) //割り算
+      {
+        return '0除算';
+        result /= num[i + 1];
       } else {
         return 'e'; //以外はエラー表示
       }

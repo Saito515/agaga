@@ -1,7 +1,7 @@
 import 'dart:js_util';
 
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'dart:math' as Math;
 import 'dart:async';
 import 'dart:collection';
 import 'dart:io';
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _firstNum = _setNumber;
     _setNumber = 0;
     _displayNumber = 0;
-    _calcType = type;
+    _calcType;
   }
 
   void _calcAdd() {
