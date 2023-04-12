@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'd_main.dart';
 import 'dart:io';
 
 const c_op = ['+', '-', '×', '÷'];
