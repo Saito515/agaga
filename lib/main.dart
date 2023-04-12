@@ -44,9 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
     if (_displayNumber == _setNumber) {
       if (10000000000 > _displayNumber) {
         setState(() {
-          if (!_decimalFlag)
+          if (!_decimalFlag) {
             _displayNumber = _displayNumber * 10 + num;
-          else {
+          } else {
             int count = 1;
             for (int i = 0;
                 _displayNumber * Math.pow(10, i) !=
